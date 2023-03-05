@@ -1,6 +1,16 @@
-module.exports = function(api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo']
-  };
+const pkg = require("./package.json");
+
+module.exports = function (api) {
+    api.cache(true);
+    return {
+        presets: ["babel-preset-expo"],
+        plugins: [
+            [
+                "module-resolver",
+                {
+                    alias: pkg._moduleAliases,
+                },
+            ],
+        ],
+    };
 };
